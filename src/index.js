@@ -1,7 +1,11 @@
 console.log('%c HI', 'color: firebrick')
 const imgUrl = "https://dog.ceo/api/breeds/image/random/4";
-const breedUrl = 'https://dog.ceo/api/breeds/list/all'
 
+const breedUrl = 'https://dog.ceo/api/breeds/list/all'
+ let drop =  document.getElementById('breed-dropdown');
+ console.log('drop')
+
+// drop.addEventListener("change",getval(event));
  function fetchImg(){
   return fetch(imgUrl)
   .then(resp => resp.json())
@@ -35,8 +39,9 @@ function renderImg(json) {
         main.appendChild(lib);
     }
   }
-  function getval() {
-     let val =  document.getElementById('breed-dropdown').value;
+  function getval(event) {
+     //let val =  document.getElementById('breed-dropdown').value;
+     let val = event.target.value;
      let lis = document.querySelectorAll('li');
      if (val == "all"){
         for(let i=0;i<lis.length;i++){
@@ -60,5 +65,22 @@ function renderImg(json) {
   document.addEventListener('DOMContentLoaded',function(){
     fetchImg();
     fetbreed();
-    
+  
+
   })
+
+window.addEventListener('load', (event) => {
+  fetchfun();
+});
+
+function fetchfun(){
+  fetch(imgUrl)
+.then(function(response) {
+  return response.json();
+}).then(function(json){
+  let obj = json;
+  let img = document.createElement('img');
+  img.src= obj;
+});
+}
+
