@@ -3,7 +3,7 @@ const imgUrl = "https://dog.ceo/api/breeds/image/random/4";
 
 const breedUrl = 'https://dog.ceo/api/breeds/list/all'
  let drop =  document.getElementById('breed-dropdown');
- console.log('drop')
+ console.log(drop)
 
 // drop.addEventListener("change",getval(event));
  function fetchImg(){
